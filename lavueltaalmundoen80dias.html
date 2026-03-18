@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mi Manga</title>
+<style>
+body{
+background:black;
+color:white;
+text-align:center;
+font-family:Arial;
+}
+
+img{
+width:300px;
+margin:10px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📖 Mi página de Manga</h1>
+
+<input type="file" id="subir" multiple>
+
+<button onclick="mostrar()">Subir páginas</button>
+
+<div id="galeria"></div>
+
+<script>
+
+function mostrar(){
+
+let archivos = document.getElementById("subir").files;
+let galeria = document.getElementById("galeria");
+
+for(let i=0;i<archivos.length;i++){
+
+let lector = new FileReader();
+
+lector.onload = function(e){
+
+let img = document.createElement("img");
+img.src = e.target.result;
+
+galeria.appendChild(img);
+
+}
+
+lector.readAsDataURL(archivos[i]);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
